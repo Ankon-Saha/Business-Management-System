@@ -1,0 +1,37 @@
+create table Table1 (Emp_ID number(3) primary key, Phone number(11))
+desc Table1
+
+create table Table2 (Emp_ID number(3) primary key, First_Name varchar2(8), Last_Name varchar2(8))
+desc Table2
+
+create table Table3 (Emp_ID number(3) primary key, DOB date, Age int default 0, Dept_ID number(1), foreign key (Dept_ID) references Table4 (Dept_ID))
+desc Table3
+
+create table Table4 (Dept_ID number(1) primary key, Dept_Name varchar2(10))
+alter table Table4 modify Dept_Name varchar2(20)
+desc Table4
+
+create table Table5 (P_ID number(2) primary key, P_Name varchar2(10), Dept_ID number(1), foreign key (Dept_ID) references Table4 (Dept_ID))
+alter table Table5 modify P_Name varchar2(20)
+desc Table5
+
+create table Table6 (P_ID number(2) primary key, S_Date date, E_Date date)
+desc Table6
+
+create table Table7 (C_ID number(2) primary key, C_Name varchar2(10))
+desc Table7
+
+create table Table8 (C_ID number(2) primary key, C_Phone number(11))
+desc Table8
+
+create table Table9 (Pay_ID int primary key, Pay_Method varchar2(10), C_ID number(2), foreign key (C_ID) references Table7 (C_ID))
+desc Table9
+
+create table Table10 (Pay_ID int primary key, Amount int)
+desc Table10
+
+create table Table11 (Task_ID number(4) primary key, Status varchar2(10), Deadline date, P_ID number(2), foreign key (P_ID) references Table5 (P_ID))
+desc Table11
+
+create table Table12 (Task_ID number(4) primary key, Status varchar2(10), Deadline date, Emp_ID number(2), foreign key (Emp_ID) references Table2 (Emp_ID))
+desc Table12
